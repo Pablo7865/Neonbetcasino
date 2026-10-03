@@ -29,6 +29,10 @@
     .hero{display:block;min-height:0;border:0;background:transparent}
     .hero:before,.hero:after{display:none}
     .home-banner{display:block;width:100%;height:clamp(220px,50vw,620px);object-fit:cover;object-position:center;border:1px solid #39352b;border-radius:9px}
+    .sponsor-note{margin-top:26px;padding:25px 20px;border:1px solid #2c332b;border-radius:9px;background:linear-gradient(120deg,#191d19,#151914);text-align:center}
+    .sponsor-note-label{display:inline-block;margin-bottom:8px;color:var(--green);font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+    .sponsor-note h2{margin:0;font:600 16px var(--display);color:var(--text)}
+    .sponsor-note p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
     .support-launcher{position:fixed;right:22px;bottom:22px;z-index:8;display:flex;align-items:center;gap:9px;border:1px solid #dcff9a;background:var(--green);color:#172012;padding:13px 17px;border-radius:999px;font-weight:700;font-size:13px;box-shadow:0 8px 28px #0008}
     .support-launcher:hover{background:#d4ff82;transform:translateY(-2px)}
     .support-panel{position:fixed;right:22px;bottom:82px;z-index:9;width:min(370px,calc(100vw - 28px));height:min(560px,calc(100vh - 110px));display:none;grid-template-rows:auto 1fr;border:1px solid #414a3b;border-radius:14px;overflow:hidden;background:#171b16;box-shadow:0 20px 70px #000b}
@@ -114,6 +118,11 @@
       </section>
       <div class="providers" id="canli"><strong>Oyun sağlayıcısı</strong><span class="provider">Pragmatic Play</span><span>Resmi entegrasyon bekleniyor</span></div>
       <div class="responsible"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>Sorumlu oyun.</strong> Bu site görsel önizleme sunar. Bakiye sanaldır; gerçek para, ödeme veya kazanç işlemi yoktur. Oyun deneyiminizi dengede tutun.</span></div>
+      <section class="sponsor-note" aria-labelledby="sponsor-note-title">
+        <span class="sponsor-note-label">İş ortaklıkları</span>
+        <h2 id="sponsor-note-title">Sponsor iş birlikleri yakında</h2>
+        <p>Yeni iş birliklerimiz kesinleştiğinde burada duyuracağız.</p>
+      </section>
     </main>
   </div>
   <div class="demo-ribbon"><span>Gerçek para yatırma ve çekme işlemleri kapalıdır</span></div>
