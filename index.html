@@ -39,16 +39,25 @@
     .support-status{margin-top:4px;color:#b3bea9;font-size:10px}
     .support-close{width:32px;height:32px;border:1px solid #42493e;border-radius:7px;background:transparent;color:#d9dfd2;font-size:20px}
     .support-content{min-height:0}
-    .support-intake{height:100%;overflow:auto;padding:20px 16px}
-    .support-intake h3{margin:0 0 7px;font:600 17px var(--display)}
-    .support-intake>p{margin:0 0 17px;color:#b3bba9;font-size:12px;line-height:1.5}
-    .support-intake label{display:block;margin:0 0 12px;color:#dfe4d7;font-size:11px;font-weight:600}
-    .support-intake input,.support-intake select{display:block;width:100%;height:39px;margin-top:6px;padding:0 10px;border:1px solid #3b4437;border-radius:7px;background:#111511;color:var(--text);outline:none;font:12px var(--sans)}
-    .support-intake input:focus,.support-intake select:focus{border-color:#83916e}
-    .support-intake select:invalid{color:#9aa294}
-    .support-intake-error{margin:-2px 0 12px!important;color:#ff9a86!important;font-size:11px!important}
-    .support-start{width:100%;min-height:42px;border:0;border-radius:7px;background:var(--green);color:#172012;font-size:12px;font-weight:700}
-    .support-start:hover{background:#d4ff82}
+    .support-intake{height:100%;overflow:auto;padding:16px 18px;background:radial-gradient(ellipse at 100% 0,#c4f36c0d,transparent 42%)}
+    .support-intake-head{margin-bottom:13px}
+    .support-intake-kicker{display:inline-flex;align-items:center;gap:7px;margin-bottom:8px;color:var(--green);font-size:9px;font-weight:700;letter-spacing:1.15px;text-transform:uppercase}
+    .support-intake-kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px #c4f36c88}
+    .support-intake h3{margin:0 0 6px;font:600 21px/1.2 var(--display);letter-spacing:-.35px}
+    .support-intake> .support-intake-head p{margin:0;color:#aeb6a7;font-size:11px;line-height:1.55}
+    .support-intake label{display:block;margin:0 0 10px;color:#e2e7dc;font-size:11px;font-weight:600;letter-spacing:.1px}
+    .support-intake input,.support-intake select{display:block;width:100%;height:40px;margin-top:5px;padding:0 12px;border:1px solid #384135;border-radius:8px;background:#111511;color:var(--text);outline:none;font:12px var(--sans);transition:border-color .18s,box-shadow .18s,background .18s}
+    .support-intake input::placeholder{color:#737d70}
+    .support-intake input:hover,.support-intake select:hover{border-color:#56624f;background:#141914}
+    .support-intake input:focus,.support-intake select:focus{border-color:#a5d45c;box-shadow:0 0 0 3px #c4f36c1a}
+    .support-intake select{appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23aeb6a7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+    .support-intake select:invalid{color:#858f82}
+    .support-intake-error{margin:-2px 0 12px!important;padding:9px 10px;border:1px solid #744538;border-radius:7px;background:#42271f;color:#ffb09c!important;font-size:11px!important}
+    .support-start{width:100%;min-height:45px;margin-top:3px;border:1px solid #d8ff9d;border-radius:8px;background:linear-gradient(135deg,#d5ff8c,#b9e95c);color:#172012;font-size:12px;font-weight:700;box-shadow:0 5px 18px #a8d85b1c;transition:transform .18s,box-shadow .18s,filter .18s}
+    .support-start:hover{filter:brightness(1.04);transform:translateY(-1px);box-shadow:0 8px 22px #a8d85b30}
+    .support-start:focus-visible{outline:2px solid #f2ffd9;outline-offset:3px}
+    .support-intake-privacy{display:flex;align-items:flex-start;gap:7px;margin:8px 0 0!important;color:#828d7d!important;font-size:9px!important;line-height:1.5!important}
+    .support-intake-privacy:before{content:"✓";flex:none;color:var(--green);font-weight:700}
     .support-chat{height:100%;min-height:0;display:none;grid-template-rows:1fr auto}
     .support-chat.started{display:grid}
     .support-messages{display:flex;flex-direction:column;gap:12px;overflow:auto;padding:17px 14px}
@@ -113,12 +122,12 @@
     <div class="support-head"><div class="support-avatar" aria-hidden="true">N</div><div class="support-title" id="support-heading">Neonbetcasino Destek<div class="support-status">Telegram destek · @neonbetcasinoo</div></div><button class="support-close" id="support-close" aria-label="Sohbeti kapat">×</button></div>
     <div class="support-content">
       <form class="support-intake" id="support-intake" novalidate>
-        <h3>Hoş geldiniz!</h3><p>Lütfen sohbete başlamadan önce aşağıdaki formu doldurun.</p>
-        <label for="support-name">Ad ve Soyad:<input id="support-name" name="name" type="text" autocomplete="name" maxlength="100" required></label>
-        <label for="support-username">Kullanıcı Adı:<input id="support-username" name="username" type="text" autocomplete="username" maxlength="64" required></label>
-        <label for="support-topic">Konu:
+        <div class="support-intake-head"><span class="support-intake-kicker">Neonbetcasino Destek</span><h3>Size nasıl yardımcı olabiliriz?</h3><p>Sohbete başlamadan önce bilgilerinizi ve destek konusunu seçin.</p></div>
+        <label for="support-name">Ad ve Soyad<input id="support-name" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Adınızı ve soyadınızı girin" required></label>
+        <label for="support-username">Kullanıcı Adı<input id="support-username" name="username" type="text" autocomplete="username" maxlength="64" placeholder="Hesap kullanıcı adınız" required></label>
+        <label for="support-topic">Destek Konusu
           <select id="support-topic" name="topic" required>
-            <option value="" selected disabled>-- Seçiniz --</option>
+            <option value="" selected disabled>Konu seçin</option>
             <option value="Yatırım Sorunları">Yatırım Sorunları</option>
             <option value="Çekim Sorunları">Çekim Sorunları</option>
             <option value="Hesap Sorunları">Hesap Sorunları</option>
@@ -127,7 +136,8 @@
           </select>
         </label>
         <p class="support-intake-error" id="support-intake-error" role="alert" hidden>Lütfen gerekli alanları doldurun</p>
-        <button class="support-start" type="submit">Şimdi konuşmaya başlayın</button>
+        <button class="support-start" type="submit">Şimdi konuşmaya başlayın <span aria-hidden="true">→</span></button>
+        <p class="support-intake-privacy">Bilgileriniz yalnızca destek talebinizi yönlendirmek için kullanılır.</p>
       </form>
       <div class="support-chat" id="support-chat">
         <div class="support-messages" id="support-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
