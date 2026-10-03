@@ -25,6 +25,12 @@
     .sidebar-language{width:100%;min-height:42px;display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid #292137;border-radius:7px;background:#151020;color:#e7dfef;text-align:left;font-size:11px}
     .sidebar-language:hover{border-color:#594b6b}
     .sidebar-language .language-arrow{margin-left:auto;color:#a99abe}
+    .sidebar-auth{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:13px 0 10px}
+    .sidebar-auth-button{min-width:0;min-height:42px;display:flex;align-items:center;justify-content:center;gap:6px;padding:7px 5px;border:1px solid #87279b;border-radius:8px;background:#140d1b;color:#ead9ef;font-size:11px;font-weight:700;white-space:nowrap;transition:background .15s,border-color .15s,transform .15s}
+    .sidebar-auth-button:hover{border-color:#be25ce;background:#211128;transform:translateY(-1px)}
+    .sidebar-auth-button.register{border-color:#c323d3;background:#bd22ce;color:#fff}
+    .sidebar-auth-button.register:hover{border-color:#d94de7;background:#c92fda}
+    .sidebar-auth-button svg{width:14px;height:14px;flex:none}
     .sidebar-overlay{display:none}
     .sidebar-notice{position:fixed;left:50%;bottom:24px;z-index:15;max-width:calc(100vw - 32px);padding:11px 15px;transform:translate(-50%,12px);border:1px solid #423550;border-radius:7px;background:#17111f;color:#e9e0f0;font-size:11px;box-shadow:0 8px 28px #0008;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
     .sidebar-notice.visible{opacity:1;transform:translate(-50%,0)}
@@ -150,6 +156,10 @@
             <a class="sidebar-link" href="#bonuslar"><span class="sidebar-icon" aria-hidden="true">♔</span>Promosyonlar</a>
           </div>
         </nav>
+        <div class="sidebar-auth" aria-label="Hesap işlemleri">
+          <button class="sidebar-auth-button" type="button" data-sidebar-auth><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M13 4h6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/></svg>Giriş Yap</button>
+          <button class="sidebar-auth-button register" type="button" data-sidebar-auth><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a6 6 0 0 1 12 0v1M19 8v6M16 11h6"/></svg>Kayıt Ol</button>
+        </div>
         <button class="sidebar-language" id="sidebar-language" type="button" aria-label="Dil: Türkçe"><span aria-hidden="true">🇹🇷</span><span>Türkçe</span><span class="language-arrow" aria-hidden="true">⌄</span></button>
       </aside>
       <main id="top">
@@ -296,6 +306,7 @@
     document.querySelector('#sidebar-overlay').addEventListener('click',closeSidebar);
     document.querySelectorAll('[data-sidebar-filter]').forEach(link=>link.addEventListener('click',()=>{activeCategory=link.dataset.sidebarFilter;document.querySelector('#game-search').value='';render();closeSidebar()}));
     document.querySelectorAll('[data-sidebar-unavailable]').forEach(button=>button.addEventListener('click',()=>{showSidebarNotice('Bu bölüm şu anda yalnızca önizleme; oyun ve hesap bağlantısı etkin değil.');if(window.matchMedia('(max-width: 720px)').matches)closeSidebar()}));
+    document.querySelectorAll('[data-sidebar-auth]').forEach(button=>button.addEventListener('click',()=>{showSidebarNotice('Giriş ve kayıt şu anda kullanılamıyor; hesap sistemi henüz bağlı değil.');if(window.matchMedia('(max-width: 720px)').matches)closeSidebar()}));
     document.querySelector('#sidebar-language').addEventListener('click',()=>showSidebarNotice('Bu önizleme şu anda yalnızca Türkçe dilini destekliyor.'));
     document.querySelector('#site-sidebar').querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',closeSidebar));
     document.addEventListener('keydown',event=>{if(event.key==='Escape'&&document.body.classList.contains('sidebar-open'))closeSidebar()});
