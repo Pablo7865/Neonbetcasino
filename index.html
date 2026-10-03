@@ -33,6 +33,10 @@
     .sponsor-note-label{display:inline-block;margin-bottom:8px;color:var(--green);font-size:9px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
     .sponsor-note h2{margin:0;font:600 16px var(--display);color:var(--text)}
     .sponsor-note p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
+    .age-notice{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:20px;padding:16px;border-top:1px solid #2d332c;color:#aeb5a8}
+    .age-mark{width:42px;height:42px;flex:none;display:grid;place-items:center;border:1px solid #aeb5a8;border-radius:50%;color:#e8ebdf;font:600 13px var(--display)}
+    .age-notice strong{display:block;color:#e8ebdf;font-size:11px}
+    .age-notice span:last-child{font-size:10px;line-height:1.5}
     .support-launcher{position:fixed;right:22px;bottom:22px;z-index:8;display:flex;align-items:center;gap:9px;border:1px solid #dcff9a;background:var(--green);color:#172012;padding:13px 17px;border-radius:999px;font-weight:700;font-size:13px;box-shadow:0 8px 28px #0008}
     .support-launcher:hover{background:#d4ff82;transform:translateY(-2px)}
     .support-panel{position:fixed;right:22px;bottom:82px;z-index:9;width:min(370px,calc(100vw - 28px));height:min(560px,calc(100vh - 110px));display:none;grid-template-rows:auto 1fr;border:1px solid #414a3b;border-radius:14px;overflow:hidden;background:#171b16;box-shadow:0 20px 70px #000b}
@@ -123,6 +127,10 @@
         <h2 id="sponsor-note-title">Sponsor iş birlikleri yakında</h2>
         <p>Yeni iş birliklerimiz kesinleştiğinde burada duyuracağız.</p>
       </section>
+      <div class="age-notice" aria-label="18 yaş ve üzeri">
+        <span class="age-mark" aria-hidden="true">+18</span>
+        <span><strong>18 yaş ve üzeri</strong>Bu görsel oyun önizlemesi yalnızca yetişkinler içindir. Lisans veya doğrulama rozeti değildir.</span>
+      </div>
     </main>
   </div>
   <div class="demo-ribbon"><span>Gerçek para yatırma ve çekme işlemleri kapalıdır</span></div>
