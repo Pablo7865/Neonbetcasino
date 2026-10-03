@@ -34,7 +34,7 @@
     .support-panel{position:fixed;right:22px;bottom:82px;z-index:9;width:min(370px,calc(100vw - 28px));height:min(560px,calc(100vh - 110px));display:none;grid-template-rows:auto 1fr;border:1px solid #414a3b;border-radius:14px;overflow:hidden;background:#171b16;box-shadow:0 20px 70px #000b}
     .support-panel.open{display:grid;animation:fade .18s ease}
     .support-head{display:flex;align-items:center;gap:11px;padding:15px 16px;background:#20271d;border-bottom:1px solid #353d31}
-    .support-avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#35452a;color:var(--green);font-size:19px}
+    .support-avatar{width:40px;height:40px;flex:none;display:block;border:1px solid #59644e;border-radius:50%;background:#35452a;object-fit:cover}
     .support-title{flex:1;font-weight:700;font-size:13px}
     .support-status{margin-top:4px;color:#b3bea9;font-size:10px}
     .support-close{width:32px;height:32px;border:1px solid #42493e;border-radius:7px;background:transparent;color:#d9dfd2;font-size:20px}
@@ -119,7 +119,7 @@
   <div class="demo-ribbon"><span>Gerçek para yatırma ve çekme işlemleri kapalıdır</span></div>
   <button class="support-launcher" id="support-open" aria-label="Canlı destek sohbetini aç" aria-expanded="false" aria-controls="support-panel"><span aria-hidden="true">●</span> Canlı Destek</button>
   <section class="support-panel" id="support-panel" role="dialog" aria-modal="false" aria-labelledby="support-heading" aria-hidden="true">
-    <div class="support-head"><div class="support-avatar" aria-hidden="true">N</div><div class="support-title" id="support-heading">Neonbetcasino Destek<div class="support-status">Telegram destek · @neonbetcasinoo</div></div><button class="support-close" id="support-close" aria-label="Sohbeti kapat">×</button></div>
+    <div class="support-head"><img class="support-avatar" src="sibel-avatar.jpeg" alt=""><div class="support-title" id="support-heading">Sibel<div class="support-status">Canlı Destek · Telegram @neonbetcasinoo</div></div><button class="support-close" id="support-close" aria-label="Sohbeti kapat">×</button></div>
     <div class="support-content">
       <form class="support-intake" id="support-intake" novalidate>
         <div class="support-intake-head"><span class="support-intake-kicker">Neonbetcasino Destek</span><h3>Size nasıl yardımcı olabiliriz?</h3><p>Sohbete başlamadan önce bilgilerinizi ve destek konusunu seçin.</p></div>
