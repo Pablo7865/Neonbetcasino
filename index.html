@@ -31,13 +31,26 @@
     .home-banner{display:block;width:100%;height:clamp(220px,50vw,620px);object-fit:cover;object-position:center;border:1px solid #39352b;border-radius:9px}
     .support-launcher{position:fixed;right:22px;bottom:22px;z-index:8;display:flex;align-items:center;gap:9px;border:1px solid #dcff9a;background:var(--green);color:#172012;padding:13px 17px;border-radius:999px;font-weight:700;font-size:13px;box-shadow:0 8px 28px #0008}
     .support-launcher:hover{background:#d4ff82;transform:translateY(-2px)}
-    .support-panel{position:fixed;right:22px;bottom:82px;z-index:9;width:min(370px,calc(100vw - 28px));height:min(520px,calc(100vh - 110px));display:none;grid-template-rows:auto 1fr auto;border:1px solid #414a3b;border-radius:14px;overflow:hidden;background:#171b16;box-shadow:0 20px 70px #000b}
+    .support-panel{position:fixed;right:22px;bottom:82px;z-index:9;width:min(370px,calc(100vw - 28px));height:min(560px,calc(100vh - 110px));display:none;grid-template-rows:auto 1fr;border:1px solid #414a3b;border-radius:14px;overflow:hidden;background:#171b16;box-shadow:0 20px 70px #000b}
     .support-panel.open{display:grid;animation:fade .18s ease}
     .support-head{display:flex;align-items:center;gap:11px;padding:15px 16px;background:#20271d;border-bottom:1px solid #353d31}
     .support-avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#35452a;color:var(--green);font-size:19px}
     .support-title{flex:1;font-weight:700;font-size:13px}
     .support-status{margin-top:4px;color:#b3bea9;font-size:10px}
     .support-close{width:32px;height:32px;border:1px solid #42493e;border-radius:7px;background:transparent;color:#d9dfd2;font-size:20px}
+    .support-content{min-height:0}
+    .support-intake{height:100%;overflow:auto;padding:20px 16px}
+    .support-intake h3{margin:0 0 7px;font:600 17px var(--display)}
+    .support-intake>p{margin:0 0 17px;color:#b3bba9;font-size:12px;line-height:1.5}
+    .support-intake label{display:block;margin:0 0 12px;color:#dfe4d7;font-size:11px;font-weight:600}
+    .support-intake input,.support-intake select{display:block;width:100%;height:39px;margin-top:6px;padding:0 10px;border:1px solid #3b4437;border-radius:7px;background:#111511;color:var(--text);outline:none;font:12px var(--sans)}
+    .support-intake input:focus,.support-intake select:focus{border-color:#83916e}
+    .support-intake select:invalid{color:#9aa294}
+    .support-intake-error{margin:-2px 0 12px!important;color:#ff9a86!important;font-size:11px!important}
+    .support-start{width:100%;min-height:42px;border:0;border-radius:7px;background:var(--green);color:#172012;font-size:12px;font-weight:700}
+    .support-start:hover{background:#d4ff82}
+    .support-chat{height:100%;min-height:0;display:none;grid-template-rows:1fr auto}
+    .support-chat.started{display:grid}
     .support-messages{display:flex;flex-direction:column;gap:12px;overflow:auto;padding:17px 14px}
     .support-message{max-width:88%;padding:10px 12px;border:1px solid #363d32;border-radius:12px 12px 12px 3px;background:#222820;color:#e8ebdf;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
     .support-message.user{align-self:flex-end;border-color:#607348;border-radius:12px 12px 3px 12px;background:#303d27}
@@ -98,8 +111,29 @@
   <button class="support-launcher" id="support-open" aria-label="Canlı destek sohbetini aç" aria-expanded="false" aria-controls="support-panel"><span aria-hidden="true">●</span> Canlı Destek</button>
   <section class="support-panel" id="support-panel" role="dialog" aria-modal="false" aria-labelledby="support-heading" aria-hidden="true">
     <div class="support-head"><div class="support-avatar" aria-hidden="true">N</div><div class="support-title" id="support-heading">Neonbetcasino Destek<div class="support-status">Telegram destek · @neonbetcasinoo</div></div><button class="support-close" id="support-close" aria-label="Sohbeti kapat">×</button></div>
-    <div class="support-messages" id="support-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
-    <form class="support-compose" id="support-form"><input id="support-input" type="text" maxlength="500" placeholder="Mesajınızı yazın..." aria-label="Destek mesajı" autocomplete="off" required><button class="support-send" type="submit" aria-label="Mesajı gönder">➤</button></form>
+    <div class="support-content">
+      <form class="support-intake" id="support-intake" novalidate>
+        <h3>Hoş geldiniz!</h3><p>Lütfen sohbete başlamadan önce aşağıdaki formu doldurun.</p>
+        <label for="support-name">Ad ve Soyad:<input id="support-name" name="name" type="text" autocomplete="name" maxlength="100" required></label>
+        <label for="support-username">Kullanıcı Adı:<input id="support-username" name="username" type="text" autocomplete="username" maxlength="64" required></label>
+        <label for="support-topic">Konu:
+          <select id="support-topic" name="topic" required>
+            <option value="" selected disabled>-- Seçiniz --</option>
+            <option value="Yatırım Sorunları">Yatırım Sorunları</option>
+            <option value="Çekim Sorunları">Çekim Sorunları</option>
+            <option value="Hesap Sorunları">Hesap Sorunları</option>
+            <option value="Bonus Sorunları">Bonus Sorunları</option>
+            <option value="Diğer">Diğer</option>
+          </select>
+        </label>
+        <p class="support-intake-error" id="support-intake-error" role="alert" hidden>Lütfen gerekli alanları doldurun</p>
+        <button class="support-start" type="submit">Şimdi konuşmaya başlayın</button>
+      </form>
+      <div class="support-chat" id="support-chat">
+        <div class="support-messages" id="support-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+        <form class="support-compose" id="support-form"><input id="support-input" type="text" maxlength="500" placeholder="Mesajınızı yazın..." aria-label="Destek mesajı" autocomplete="off" required><button class="support-send" type="submit" aria-label="Mesajı gönder">➤</button></form>
+      </div>
+    </div>
   </section>
   <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="modal-close" id="modal-close" aria-label="Pencereyi kapat">×</button><span class="modal-badge">OYUN ÖNİZLEMESİ</span><h3 id="modal-title">Oyun adı</h3><p id="modal-description">Oyun açıklaması</p><div class="preview" id="modal-art" aria-hidden="true">✦</div><button class="primary" id="preview-button">Önizleme hazır</button><p class="modal-foot">Görsel oyun önizlemesi · Gerçek para kullanılmaz</p></div></div>
   <div class="modal-backdrop" id="profile-modal" role="dialog" aria-modal="true" aria-labelledby="profile-title"><section class="modal"><button class="modal-close" id="profile-dismiss" aria-label="Profili kapat">×</button><span class="modal-badge">ÖNİZLEME HESABI</span><div class="profile-head"><div class="profile-large" aria-hidden="true">Ö</div><div><h3 id="profile-title">Kullanıcı profili</h3><p>Hesap bağlantısı bekleniyor</p></div></div><div class="profile-details"><div class="profile-row"><span>Kullanıcı</span><strong>Önizleme hesabı</strong></div><div class="profile-row"><span>Bakiye</span><strong class="demo-value">₺0,00</strong></div><div class="profile-row"><span>Cüzdan türü</span><strong>Sanal TRY</strong></div></div><p class="profile-note">Gerçek hesap, para yatırma veya para çekme bağlantısı bulunmuyor.</p><button class="primary" id="profile-close">Kapat</button></section></div>
@@ -144,14 +178,15 @@
     const supportPanel=document.querySelector('#support-panel');
     const supportMessages=document.querySelector('#support-messages');
     const supportLauncher=document.querySelector('#support-open');
-    let supportWelcomed=false;
+    let supportDetails=null;
     function addSupportMessage(text,fromUser=false){const message=document.createElement('div');message.className=`support-message${fromUser?' user':''}`;message.append(document.createTextNode(text));const time=document.createElement('small');time.textContent=fromUser?'Siz':'Destek yönlendirmesi';message.append(time);supportMessages.append(message);supportMessages.scrollTop=supportMessages.scrollHeight;return message}
-    function openSupport(){supportPanel.classList.add('open');supportPanel.setAttribute('aria-hidden','false');supportLauncher.setAttribute('aria-expanded','true');if(!supportWelcomed){addSupportMessage('Merhaba! Destek mesajınızı buradan yazabilirsiniz. Gönderdiğinizde Telegram’da @neonbetcasinoo sohbeti açılır; iletmek için Telegram’da Gönder’e basmanız gerekir.');supportWelcomed=true}document.querySelector('#support-input').focus()}
+    function openSupport(){supportPanel.classList.add('open');supportPanel.setAttribute('aria-hidden','false');supportLauncher.setAttribute('aria-expanded','true');document.querySelector(supportDetails?'#support-input':'#support-name').focus()}
     function closeSupport(){supportPanel.classList.remove('open');supportPanel.setAttribute('aria-hidden','true');supportLauncher.setAttribute('aria-expanded','false');supportLauncher.focus()}
     supportLauncher.addEventListener('click',()=>supportPanel.classList.contains('open')?closeSupport():openSupport());
     document.querySelector('#support-close').addEventListener('click',closeSupport);
     supportPanel.addEventListener('keydown',event=>{if(event.key==='Escape')closeSupport()});
-    document.querySelector('#support-form').addEventListener('submit',event=>{event.preventDefault();const input=document.querySelector('#support-input');const text=input.value.trim();if(!text)return;addSupportMessage(text,true);input.value='';const handoff=addSupportMessage('Mesajınız Telegram’da hazırlanıyor. Sohbeti açıp Telegram’da Gönder’e basarak destek ekibine iletin.');const link=document.createElement('a');link.href=`https://t.me/neonbetcasinoo?text=${encodeURIComponent(text)}`;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Telegram’da sohbeti aç';link.style.cssText='display:inline-block;margin-top:7px;color:var(--green);text-decoration:underline';handoff.append(link)});
+    document.querySelector('#support-intake').addEventListener('submit',event=>{event.preventDefault();const name=document.querySelector('#support-name').value.trim();const username=document.querySelector('#support-username').value.trim();const topic=document.querySelector('#support-topic').value;const error=document.querySelector('#support-intake-error');if(!name||!username||!topic){error.hidden=false;const firstMissing=!name?'#support-name':!username?'#support-username':'#support-topic';document.querySelector(firstMissing).focus();return}error.hidden=true;supportDetails={name,username,topic};document.querySelector('#support-intake').hidden=true;document.querySelector('#support-chat').classList.add('started');addSupportMessage(`Merhaba ${name}! ${topic} konusunda size nasıl yardımcı olabiliriz? Mesajınız Telegram’da @neonbetcasinoo sohbeti için hazırlanacak. İletmek için Telegram’da Gönder’e basmanız gerekir.`);document.querySelector('#support-input').focus()});
+    document.querySelector('#support-form').addEventListener('submit',event=>{event.preventDefault();const input=document.querySelector('#support-input');const text=input.value.trim();if(!text||!supportDetails)return;addSupportMessage(text,true);input.value='';const handoff=addSupportMessage('Mesajınız Telegram’da hazırlanıyor. Sohbeti açıp Telegram’da Gönder’e basarak destek ekibine iletin.');const telegramMessage=`Ad ve Soyad: ${supportDetails.name}\nKullanıcı Adı: ${supportDetails.username}\nKonu: ${supportDetails.topic}\nMesaj: ${text}`;const link=document.createElement('a');link.href=`https://t.me/neonbetcasinoo?text=${encodeURIComponent(telegramMessage)}`;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Telegram’da sohbeti aç';link.style.cssText='display:inline-block;margin-top:7px;color:var(--green);text-decoration:underline';handoff.append(link)});
   </script>
 </body>
 </html>
