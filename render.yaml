@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: neonbetcasino
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /health
+    envVars:
+      - key: PLAYER_AUTH_API_URL
+        sync: false
