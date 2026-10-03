@@ -97,7 +97,7 @@
   <div class="demo-ribbon"><span>Gerçek para yatırma ve çekme işlemleri kapalıdır</span></div>
   <button class="support-launcher" id="support-open" aria-label="Canlı destek sohbetini aç" aria-expanded="false" aria-controls="support-panel"><span aria-hidden="true">●</span> Canlı Destek</button>
   <section class="support-panel" id="support-panel" role="dialog" aria-modal="false" aria-labelledby="support-heading" aria-hidden="true">
-    <div class="support-head"><div class="support-avatar" aria-hidden="true">N</div><div class="support-title" id="support-heading">Neonbetcasino Destek<div class="support-status">Otomatik önizleme · Temsilciye bağlı değil</div></div><button class="support-close" id="support-close" aria-label="Sohbeti kapat">×</button></div>
+    <div class="support-head"><div class="support-avatar" aria-hidden="true">N</div><div class="support-title" id="support-heading">Neonbetcasino Destek<div class="support-status">Telegram destek · @neonbetcasinoo</div></div><button class="support-close" id="support-close" aria-label="Sohbeti kapat">×</button></div>
     <div class="support-messages" id="support-messages" role="log" aria-live="polite" aria-relevant="additions"></div>
     <form class="support-compose" id="support-form"><input id="support-input" type="text" maxlength="500" placeholder="Mesajınızı yazın..." aria-label="Destek mesajı" autocomplete="off" required><button class="support-send" type="submit" aria-label="Mesajı gönder">➤</button></form>
   </section>
@@ -145,13 +145,13 @@
     const supportMessages=document.querySelector('#support-messages');
     const supportLauncher=document.querySelector('#support-open');
     let supportWelcomed=false;
-    function addSupportMessage(text,fromUser=false){const message=document.createElement('div');message.className=`support-message${fromUser?' user':''}`;message.append(document.createTextNode(text));const time=document.createElement('small');time.textContent=fromUser?'Siz':'Otomatik destek';message.append(time);supportMessages.append(message);supportMessages.scrollTop=supportMessages.scrollHeight}
-    function openSupport(){supportPanel.classList.add('open');supportPanel.setAttribute('aria-hidden','false');supportLauncher.setAttribute('aria-expanded','true');if(!supportWelcomed){addSupportMessage('Merhaba! Neonbetcasino önizleme desteğine hoş geldiniz. Size nasıl yardımcı olabiliriz? Bu sohbet otomatiktir ve gerçek temsilciye bağlanmaz.');supportWelcomed=true}document.querySelector('#support-input').focus()}
+    function addSupportMessage(text,fromUser=false){const message=document.createElement('div');message.className=`support-message${fromUser?' user':''}`;message.append(document.createTextNode(text));const time=document.createElement('small');time.textContent=fromUser?'Siz':'Destek yönlendirmesi';message.append(time);supportMessages.append(message);supportMessages.scrollTop=supportMessages.scrollHeight;return message}
+    function openSupport(){supportPanel.classList.add('open');supportPanel.setAttribute('aria-hidden','false');supportLauncher.setAttribute('aria-expanded','true');if(!supportWelcomed){addSupportMessage('Merhaba! Destek mesajınızı buradan yazabilirsiniz. Gönderdiğinizde Telegram’da @neonbetcasinoo sohbeti açılır; iletmek için Telegram’da Gönder’e basmanız gerekir.');supportWelcomed=true}document.querySelector('#support-input').focus()}
     function closeSupport(){supportPanel.classList.remove('open');supportPanel.setAttribute('aria-hidden','true');supportLauncher.setAttribute('aria-expanded','false');supportLauncher.focus()}
     supportLauncher.addEventListener('click',()=>supportPanel.classList.contains('open')?closeSupport():openSupport());
     document.querySelector('#support-close').addEventListener('click',closeSupport);
     supportPanel.addEventListener('keydown',event=>{if(event.key==='Escape')closeSupport()});
-    document.querySelector('#support-form').addEventListener('submit',event=>{event.preventDefault();const input=document.querySelector('#support-input');const text=input.value.trim();if(!text)return;addSupportMessage(text,true);input.value='';addSupportMessage('Mesajınız bu önizleme sohbetinde görüntülendi. Gerçek destek ekibine iletilmedi; canlı temsilci bağlantısı henüz etkin değil.')});
+    document.querySelector('#support-form').addEventListener('submit',event=>{event.preventDefault();const input=document.querySelector('#support-input');const text=input.value.trim();if(!text)return;addSupportMessage(text,true);input.value='';const handoff=addSupportMessage('Mesajınız Telegram’da hazırlanıyor. Sohbeti açıp Telegram’da Gönder’e basarak destek ekibine iletin.');const link=document.createElement('a');link.href=`https://t.me/neonbetcasinoo?text=${encodeURIComponent(text)}`;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Telegram’da sohbeti aç';link.style.cssText='display:inline-block;margin-top:7px;color:var(--green);text-decoration:underline';handoff.append(link)});
   </script>
 </body>
 </html>
